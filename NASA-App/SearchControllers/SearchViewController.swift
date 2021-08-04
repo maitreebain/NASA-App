@@ -45,6 +45,9 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        //id: imageCell
+        
+        
         return UICollectionViewCell()
     }
     
