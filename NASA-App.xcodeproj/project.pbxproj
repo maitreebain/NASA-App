@@ -13,6 +13,7 @@
 		8002A87226BB3265005EAA5C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8002A87126BB3265005EAA5C /* DetailView.swift */; };
 		8002A87A26BB3271005EAA5C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8002A87926BB3271005EAA5C /* BackgroundView.swift */; };
 		800D74B726BB76640053C329 /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D74B626BB76640053C329 /* ImageClient.swift */; };
+		803F64DA26BC905F00714870 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F64D926BC905F00714870 /* ShowAlert.swift */; };
 		804FB28E26B9F5BF00C8897A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB28D26B9F5BF00C8897A /* AppDelegate.swift */; };
 		804FB29026B9F5BF00C8897A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB28F26B9F5BF00C8897A /* SceneDelegate.swift */; };
 		804FB29226B9F5BF00C8897A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB29126B9F5BF00C8897A /* SearchViewController.swift */; };
@@ -48,6 +49,7 @@
 		8002A87126BB3265005EAA5C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		8002A87926BB3271005EAA5C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		800D74B626BB76640053C329 /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
+		803F64D926BC905F00714870 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		804FB28A26B9F5BF00C8897A /* NASA-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NASA-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		804FB28D26B9F5BF00C8897A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		804FB28F26B9F5BF00C8897A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		800D74BB26BB79840053C329 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				803F64D926BC905F00714870 /* ShowAlert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				8002A86726BB3229005EAA5C /* NASAModel.swift in Sources */,
 				8080993C26BB707600F23EA3 /* ImageCell.swift in Sources */,
 				8002A87A26BB3271005EAA5C /* BackgroundView.swift in Sources */,
+				803F64DA26BC905F00714870 /* ShowAlert.swift in Sources */,
 				804FB28E26B9F5BF00C8897A /* AppDelegate.swift in Sources */,
 				8002A87226BB3265005EAA5C /* DetailView.swift in Sources */,
 				8002A86C26BB3241005EAA5C /* DetailViewController.swift in Sources */,

@@ -13,17 +13,25 @@ class ImageCell: UICollectionViewCell {
     
     func configureCell(with url: String) {
         
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .blue
+        addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         ImageClient.fetchImage(urlString: url) { [weak self] (result) in
             
             DispatchQueue.main.async {
                 switch result{
                 case .failure:
+                    activityIndicator.stopAnimating()
                     self?.imageView.image = UIImage(systemName: "photo.on.rectangle.angled")
                 case .success(let image):
+                    activityIndicator.stopAnimating()
                     self?.imageView.image = image
                     
                 }
             }
         }
+    
     }
 }

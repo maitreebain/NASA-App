@@ -30,8 +30,9 @@ class SearchViewController: UIViewController {
     }
     
     private func loadUI() {
-        
+
     }
+    
     
 }
 
@@ -55,6 +56,7 @@ extension SearchViewController: UISearchBarDelegate {
                 
             }
         }
+        dismiss(animated: true)
     }
     
     
@@ -92,5 +94,10 @@ extension SearchViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nasaData = collection[indexPath.row]
+        let detailVC =  DetailViewController(nasaData)
+        detailVC.nasaImageDetails = nasaData
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
