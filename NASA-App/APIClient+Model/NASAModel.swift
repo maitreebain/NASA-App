@@ -7,44 +7,36 @@
 
 import Foundation
 
-enum MediaType: String, Codable {
-    case audio = "audio"
-    case image = "image"
-    case video = "video"
-}
-
 struct NASACollection: Decodable {
     let collection: Collection
 }
 
 struct Collection: Decodable {
-    let items: [Items]
+    let items: [Item]
 }
 
-struct Items: Decodable {
-    let links: [ItemLink]
-    let data: [ImageData]
+struct Item: Decodable {
+    let links: [ThumbnailLinks]?
+    let data: [Data]
 }
 
-struct ItemLink: Decodable {
-    let href: String //thumbnail image link
-    let render: MediaType
+struct ThumbnailLinks: Decodable {
+    let href: String
 }
 
-struct ImageData: Decodable {
+struct Data: Decodable {
     let title: String
-    let description: String?
-    let mediaType: MediaType
     let nasaID: String
+    let description: String?
     let photographer: String?
+    let descriptionPlus: String?
     let location: String?
-    
-    
+
     enum CodingKeys: String, CodingKey {
         case title
-        case description = "description_508"
-        case mediaType = "media_type"
         case nasaID = "nasa_id"
+        case description
+        case descriptionPlus = "description_508"
         case photographer
         case location
     }

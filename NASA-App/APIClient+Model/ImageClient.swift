@@ -11,12 +11,14 @@ struct ImageClient {
     
     static func fetchImage(urlString: String, completion: @escaping (Result<UIImage,Error>) -> Void) {
         
-        guard let url = URL(string: urlString) else {
+        let formattedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        guard let url = formattedStr, let officialURL = URL(string: url) else {
             print("no image url available")
             return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: officialURL) { (data, response, error) in
             
             if let data = data {
                 guard let image = UIImage(data: data) else {
@@ -28,6 +30,6 @@ struct ImageClient {
             if let error =  error {
                 completion(.failure(error))
             }
-        }
+        }.resume()
     }
 }

@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     
     private var searchText = ""
     
-    private var collection = [Items]() {
+    private var collection = [Item]() {
         didSet{
             imageCollectionView.reloadData()
         }
@@ -49,7 +49,10 @@ extension SearchViewController: UISearchBarDelegate {
             case .failure(let error):
                 print(error)
             case .success(let items):
-                self.collection = items
+                DispatchQueue.main.async {
+                    self.collection = items
+                }
+                
             }
         }
     }
@@ -81,10 +84,9 @@ extension SearchViewController: UICollectionViewDataSource {
         }
         
         let item = collection[indexPath.row]
-        let imageURL = item.links[indexPath.row].href //check if need to hardcode links[0]
         
-        DispatchQueue.main.async {
-            cell.configureCell(with: imageURL)
+        if let link = item.links?.first?.href {
+            cell.configureCell(with: link)
         }
         
         return cell

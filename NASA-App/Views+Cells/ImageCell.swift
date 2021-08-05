@@ -15,12 +15,13 @@ class ImageCell: UICollectionViewCell {
         
         ImageClient.fetchImage(urlString: url) { [weak self] (result) in
             
-            switch result{
-            case .failure:
-                self?.imageView.image = UIImage(systemName: "photo.on.rectangle.angled")
-            case .success(let image):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result{
+                case .failure:
+                    self?.imageView.image = UIImage(systemName: "photo.on.rectangle.angled")
+                case .success(let image):
                     self?.imageView.image = image
+                    
                 }
             }
         }
