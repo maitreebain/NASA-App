@@ -12,43 +12,82 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var imageSearchBar: UISearchBar!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
     
+    private var searchText = ""
+    
+    private var collection = [Items]() {
+        didSet{
+            imageCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIUpdate()
+        loadUI()
         imageSearchBar.delegate = self
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
     }
     
-    private func UIUpdate() {
+    private func loadUI() {
         
     }
-    
     
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            //show alert
+            return
+        }
+        
+        NASACollection.getNASAImages(searchText: text) { (result) in
+            
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let items):
+                self.collection = items
+            }
+        }
+    }
+    
+    
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let maxSize: CGSize = UIScreen.main.bounds.size
+        let itemWidth: CGFloat = maxSize.width * 0.415
+        let itemHeight: CGFloat = maxSize.height * 0.20
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
     
 }
 
 extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        
+        return collection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ImageCell else {
+            fatalError("could not return ImageCell")
+        }
         
-        //id: imageCell
+        let item = collection[indexPath.row]
+        let imageURL = item.links[indexPath.row].href //check if need to hardcode links[0]
         
+        DispatchQueue.main.async {
+            cell.configureCell(with: imageURL)
+        }
         
-        return UICollectionViewCell()
+        return cell
     }
     
     

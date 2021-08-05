@@ -27,7 +27,7 @@ struct Items: Decodable {
 }
 
 struct ItemLink: Decodable {
-    let href: String //image link
+    let href: String //thumbnail image link
     let render: MediaType
 }
 
@@ -35,7 +35,18 @@ struct ImageData: Decodable {
     let title: String
     let description: String?
     let mediaType: MediaType
-    let dateCreated: Date
     let nasaID: String
+    let photographer: String?
+    let location: String?
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case description = "description_508"
+        case mediaType = "media_type"
+        case nasaID = "nasa_id"
+        case photographer
+        case location
+    }
 }
 

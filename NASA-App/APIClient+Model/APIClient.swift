@@ -10,8 +10,8 @@ import UIKit
 extension NASACollection {
     
     static func getNASAImages(searchText: String, completion: @escaping (Result<[Items], Error>) -> ()) {
-        let mediaType = "image"
-        let endpoint = "https://images-api.nasa.gov/search?q=\(searchText)&media_type=\(mediaType)"
+//        let mediaType = "image"
+        let endpoint = "https://images-api.nasa.gov/search?q=\(searchText.lowercased())&media_type=image"
         
         
         guard let url = URL(string: endpoint) else {

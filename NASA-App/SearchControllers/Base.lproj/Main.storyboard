@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="milky-way" translatesAutoresizingMaskIntoConstraints="NO" id="zmv-2d-LlS">
-                                <rect key="frame" x="0.0" y="145.5" width="414" height="716.5"/>
-                            </imageView>
                             <searchBar contentMode="redraw" placeholder="search for an image e.g. apollo 11" translatesAutoresizingMaskIntoConstraints="NO" id="imx-9l-IXc">
                                 <rect key="frame" x="0.0" y="145.5" width="414" height="56"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,20 +25,35 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nmR-kD-gbl">
                                 <rect key="frame" x="0.0" y="201.5" width="414" height="660.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oKa-EH-jnX">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A4f-Ue-qpb">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="sFm-ea-EKJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="sFm-ea-EKJ" customClass="ImageCell" customModule="NASA_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LtO-Vu-CNI">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vzQ-eZ-5Rp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vzQ-eZ-5Rp" secondAttribute="trailing" id="3r9-XK-2YW"/>
+                                                <constraint firstItem="vzQ-eZ-5Rp" firstAttribute="leading" secondItem="LtO-Vu-CNI" secondAttribute="leading" id="Pnm-6t-EM1"/>
+                                                <constraint firstItem="vzQ-eZ-5Rp" firstAttribute="top" secondItem="LtO-Vu-CNI" secondAttribute="top" id="awM-yF-s5J"/>
+                                                <constraint firstAttribute="bottom" secondItem="vzQ-eZ-5Rp" secondAttribute="bottom" id="eJz-op-oaq"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="123" height="128"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="vzQ-eZ-5Rp" id="MTp-Cf-P8G"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -50,16 +62,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nmR-kD-gbl" firstAttribute="top" secondItem="imx-9l-IXc" secondAttribute="bottom" id="13W-iW-Eva"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zmv-2d-LlS" secondAttribute="trailing" id="49l-Pa-4SC"/>
                             <constraint firstItem="imx-9l-IXc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Zf-N3-Cnj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nmR-kD-gbl" secondAttribute="trailing" id="6iY-as-amQ"/>
                             <constraint firstItem="nmR-kD-gbl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BQK-B1-aKK"/>
-                            <constraint firstItem="zmv-2d-LlS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="G7V-pa-VGX"/>
                             <constraint firstItem="imx-9l-IXc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IvZ-in-Sfv"/>
-                            <constraint firstItem="zmv-2d-LlS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RwZ-2I-ojD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nmR-kD-gbl" secondAttribute="bottom" id="eev-Ni-gyW"/>
                             <constraint firstItem="imx-9l-IXc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gDC-gh-BVa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zmv-2d-LlS" secondAttribute="bottom" id="pGy-3a-HGm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Images" id="gyt-ZT-dH0"/>
@@ -100,7 +108,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="milky-way" width="665" height="480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

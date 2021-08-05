@@ -9,25 +9,20 @@ import XCTest
 @testable import NASA_App
 
 class NASA_AppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testItems() {
+        let title = "Apollo Footprint"
+        let search = "apollo"
+        
+        NASACollection.getNASAImages(searchText: search) { (result) in
+            
+            switch result {
+            case .success(let items):
+                let first = items.first?.data.first?.title
+                XCTAssertEqual(first, title, "\(title) is expected to be \(String(describing: first))")
+            case .failure(let error):
+               print(error)
+            }
         }
     }
-
 }
