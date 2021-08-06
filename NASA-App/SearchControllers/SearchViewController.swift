@@ -14,9 +14,21 @@ class SearchViewController: UIViewController {
     
     private var searchText = ""
     
+    private lazy var imageView : UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named:"imagename")
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     private var collection = [Item]() {
         didSet{
             imageCollectionView.reloadData()
+            if collection.count == 0 {
+                emptyView()
+            } else {
+                imageCollectionView.backgroundView = imageView
+            }
         }
     }
     
@@ -25,19 +37,17 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadUI()
+        
+        emptyView()
         imageSearchBar.delegate = self
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
     }
-    
-    private func loadUI() {
-        
-    }
+
     
     func search(searchText: String, page: Int = 1) {
         
-        NASACollection.getNASAImages(searchText: searchText, page: page) { (result) in
+        NASACollection.getNASAImages(searchText: searchText, page: page) { [weak self] (result) in
             
             switch result {
             case .failure(let error):
@@ -45,13 +55,18 @@ class SearchViewController: UIViewController {
             case .success(let items):
                 DispatchQueue.main.async {
                     if page == 1 {
-                    self.collection = items
+                        self?.collection = items
                     } else {
-                        self.collection.append(contentsOf: items)
+                        self?.collection.append(contentsOf: items)
                     }
+                    self?.imageSearchBar.resignFirstResponder()
                 }
             }
         }
+    }
+    
+    private func emptyView() {
+        imageCollectionView.backgroundView = BackgroundView(title: "No images available", message: "Use the search bar to look up images based on a NASA mission")
     }
     
     
@@ -66,11 +81,9 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         searchText = text
-        
         page = 1
         search(searchText: searchText)
         collection = [Item]()
-        dismiss(animated: true)
     }
     
     
@@ -118,6 +131,7 @@ extension SearchViewController: UICollectionViewDataSource {
         let nasaData = collection[indexPath.row]
         let detailVC =  DetailViewController(nasaData)
         detailVC.nasaImageDetails = nasaData
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.pushViewController(detailVC, animated: true)
     }
     

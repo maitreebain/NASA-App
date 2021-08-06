@@ -15,7 +15,7 @@ class BackgroundView: UIView {
         label.numberOfLines = 1
         label.textAlignment = .center
         label.text = "Empty State"
-        label.textColor = .white
+        label.textColor = .black
         return label
     }()
     
@@ -26,7 +26,7 @@ class BackgroundView: UIView {
         label.numberOfLines = 4
         label.textAlignment = .center
         label.text = "No Stories Saved"
-        label.textColor = .white
+        label.textColor = .black
         return label
     }()
     
