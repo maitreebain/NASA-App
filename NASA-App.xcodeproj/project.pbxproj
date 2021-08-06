@@ -23,6 +23,7 @@
 		804FB2A526B9F5C200C8897A /* NASA_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB2A426B9F5C200C8897A /* NASA_AppTests.swift */; };
 		804FB2B026B9F5C200C8897A /* NASA_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB2AF26B9F5C200C8897A /* NASA_AppUITests.swift */; };
 		8080993C26BB707600F23EA3 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8080993B26BB707600F23EA3 /* ImageCell.swift */; };
+		80DAAA7A26BDF0C200827797 /* AcitivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DAAA7926BDF0C200827797 /* AcitivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		804FB2AF26B9F5C200C8897A /* NASA_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASA_AppUITests.swift; sourceTree = "<group>"; };
 		804FB2B126B9F5C200C8897A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8080993B26BB707600F23EA3 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		80DAAA7926BDF0C200827797 /* AcitivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcitivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				803F64D926BC905F00714870 /* ShowAlert.swift */,
+				80DAAA7926BDF0C200827797 /* AcitivityIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				8002A87A26BB3271005EAA5C /* BackgroundView.swift in Sources */,
 				803F64DA26BC905F00714870 /* ShowAlert.swift in Sources */,
 				804FB28E26B9F5BF00C8897A /* AppDelegate.swift in Sources */,
+				80DAAA7A26BDF0C200827797 /* AcitivityIndicator.swift in Sources */,
 				8002A87226BB3265005EAA5C /* DetailView.swift in Sources */,
 				8002A86C26BB3241005EAA5C /* DetailViewController.swift in Sources */,
 				804FB29026B9F5BF00C8897A /* SceneDelegate.swift in Sources */,

@@ -19,16 +19,32 @@ class DetailView: UIView {
     public lazy var nasaImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo.on.rectangle.angled")
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        imageView.layer.shadowRadius = 8.0
+        imageView.layer.shadowOpacity = 1
+        imageView.layer.masksToBounds = false
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Futura", size: 20)
+        label.font = UIFont(name: "Futura", size: 28)
         label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
         label.text = "Title Here"
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    public lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Futura", size: 20)
+        label.textColor = .black
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Description:"
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -53,7 +69,7 @@ class DetailView: UIView {
         label.font = UIFont(name: "Futura", size: 14)
         label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Photographer"
+        label.text = "Photographer: "
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -61,7 +77,7 @@ class DetailView: UIView {
     
     public lazy var locationLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Futura", size: 16)
+        label.font = UIFont(name: "Futura", size: 18)
         label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
         label.text = "Location"
@@ -86,6 +102,7 @@ class DetailView: UIView {
         titleLabelSetup()
         locationLabelSetup()
         photographerLabelSetup()
+        descriptionLabelSetup()
         descriptionTextViewSetup()
     }
     
@@ -122,7 +139,7 @@ class DetailView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: nasaImageView.bottomAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: nasaImageView.bottomAnchor, constant: 40),
             titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
@@ -146,9 +163,21 @@ class DetailView: UIView {
         photographerLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            photographerLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 16),
+            photographerLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 8),
             photographerLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             photographerLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    private func descriptionLabelSetup() {
+        addSubview(descriptionLabel)
+        
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: photographerLabel.bottomAnchor, constant: 16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
     }
     
@@ -158,10 +187,10 @@ class DetailView: UIView {
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            descriptionTextView.topAnchor.constraint(equalTo: photographerLabel.bottomAnchor, constant: 20),
+            descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 14),
             descriptionTextView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            descriptionTextView.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            descriptionTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
+            descriptionTextView.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 8),
+            descriptionTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.32)
         ])
     }
 }

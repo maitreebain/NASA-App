@@ -25,6 +25,9 @@ class DetailViewController: UIViewController {
     }
     
     override func loadView() {
+        title = nasaImageDetails.data.first?.title ?? "No title available"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.barTintColor = UIColor.black
         view = detailView
         view.backgroundColor = .white
         getImage()
@@ -33,11 +36,11 @@ class DetailViewController: UIViewController {
     
     
     private func loadUI() {
-        detailView.titleLabel.text = nasaImageDetails.data[indexPath].title
-        detailView.locationLabel.text = nasaImageDetails.data[indexPath].location
-        detailView.photographerLabel.text = nasaImageDetails.data[indexPath].photographer
-        if let descript = nasaImageDetails.data[indexPath].description {
-        detailView.descriptionTextView.text = descript
+        detailView.titleLabel.text = nasaImageDetails.data.first?.title ?? "No title available"
+        detailView.locationLabel.text = nasaImageDetails.data.first?.location ?? "No location available"
+        detailView.photographerLabel.text = nasaImageDetails.data.first?.photographer ?? "No photographer available"
+        if let descript = nasaImageDetails.data.first?.description {
+            detailView.descriptionTextView.text = descript
         } else {
             detailView.descriptionTextView.text = nasaImageDetails.data[indexPath].descriptionPlus
         }

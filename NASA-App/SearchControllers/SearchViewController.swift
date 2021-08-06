@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     
     private lazy var imageView : UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named:"space")
+        iv.image = UIImage(named:"milky-way")
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -45,7 +45,9 @@ class SearchViewController: UIViewController {
         
         
         emptyView()
-//        imageCollectionView.addGestureRecognizer(tapGesture)
+        if (imageCollectionView.backgroundView != nil) {
+            imageCollectionView.backgroundView?.addGestureRecognizer(tapGesture)
+        }
         imageSearchBar.delegate = self
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
@@ -75,6 +77,14 @@ class SearchViewController: UIViewController {
     private func emptyView() {
         imageCollectionView.backgroundColor = .black
         imageCollectionView.backgroundView = BackgroundView(title: "No images available", message: "Use the search bar to look up images based on a NASA mission")
+    }
+    
+    private func collectionViewCellShadowSetup(cell: UICollectionViewCell) {
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowRadius = 8
+        cell.layer.shadowOpacity = 1
+        cell.layer.masksToBounds = false
     }
     
     @objc func resignTextField(gesture: UITapGestureRecognizer) {
@@ -131,7 +141,8 @@ extension SearchViewController: UICollectionViewDataSource {
         
         let item = collection[indexPath.row]
         
-        cell.layer.cornerRadius = 8
+        cell.imageView.layer.cornerRadius = 10
+        collectionViewCellShadowSetup(cell: cell)
         
         if let link = item.links?.first?.href {
             cell.configureCell(with: link)
@@ -150,7 +161,6 @@ extension SearchViewController: UICollectionViewDataSource {
         let nasaData = collection[indexPath.row]
         let detailVC =  DetailViewController(nasaData, indexPath.row)
         detailVC.nasaImageDetails = nasaData
-        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.pushViewController(detailVC, animated: true)
     }
     

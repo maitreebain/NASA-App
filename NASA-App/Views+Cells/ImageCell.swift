@@ -15,9 +15,9 @@ class ImageCell: UICollectionViewCell {
         
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.color = .blue
+        activityIndicator.startAnimating()
         activityIndicator.center = center
         addSubview(activityIndicator)
-        activityIndicator.startAnimating()
         
         ImageClient.fetchImage(urlString: url) { [weak self] (result) in
             

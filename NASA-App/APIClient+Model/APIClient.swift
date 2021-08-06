@@ -13,8 +13,7 @@ extension NASACollection {
         
         let endpoint = "https://images-api.nasa.gov/search?q=\(searchText.lowercased())&media_type=image&page=\(page)"
         
-        
-        guard let url = URL(string: endpoint) else {
+        guard let formattedEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: formattedEndpoint) else {
             print("no url found")
             return
         }
