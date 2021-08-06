@@ -14,9 +14,15 @@ class SearchViewController: UIViewController {
     
     private var searchText = ""
     
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(resignTextField(gesture:)))
+        return gesture
+    }()
+    
     private lazy var imageView : UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named:"imagename")
+        iv.image = UIImage(named:"space")
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -39,6 +45,7 @@ class SearchViewController: UIViewController {
         
         
         emptyView()
+//        imageCollectionView.addGestureRecognizer(tapGesture)
         imageSearchBar.delegate = self
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
@@ -66,7 +73,12 @@ class SearchViewController: UIViewController {
     }
     
     private func emptyView() {
+        imageCollectionView.backgroundColor = .black
         imageCollectionView.backgroundView = BackgroundView(title: "No images available", message: "Use the search bar to look up images based on a NASA mission")
+    }
+    
+    @objc func resignTextField(gesture: UITapGestureRecognizer) {
+        imageSearchBar.resignFirstResponder()
     }
     
     
@@ -93,10 +105,15 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
-        let itemWidth: CGFloat = maxSize.width * 0.415
-        let itemHeight: CGFloat = maxSize.height * 0.20
+        let itemWidth: CGFloat = maxSize.width * 0.40
+        let itemHeight: CGFloat = maxSize.height * 0.18
+        
         return CGSize(width: itemWidth, height: itemHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+           return UIEdgeInsets(top: 28, left: 8, bottom: 28, right: 8)
+        }
     
 }
 
@@ -114,6 +131,8 @@ extension SearchViewController: UICollectionViewDataSource {
         
         let item = collection[indexPath.row]
         
+        cell.layer.cornerRadius = 8
+        
         if let link = item.links?.first?.href {
             cell.configureCell(with: link)
         }
@@ -129,7 +148,7 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nasaData = collection[indexPath.row]
-        let detailVC =  DetailViewController(nasaData)
+        let detailVC =  DetailViewController(nasaData, indexPath.row)
         detailVC.nasaImageDetails = nasaData
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.pushViewController(detailVC, animated: true)

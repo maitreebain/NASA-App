@@ -15,7 +15,7 @@ class BackgroundView: UIView {
         label.numberOfLines = 1
         label.textAlignment = .center
         label.text = "Empty State"
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -25,8 +25,8 @@ class BackgroundView: UIView {
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.numberOfLines = 4
         label.textAlignment = .center
-        label.text = "No Stories Saved"
-        label.textColor = .black
+        label.text = "Not available"
+        label.textColor = .white
         return label
     }()
     

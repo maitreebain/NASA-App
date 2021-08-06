@@ -17,10 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="" placeholder="search for an image e.g. apollo 11" translatesAutoresizingMaskIntoConstraints="NO" id="imx-9l-IXc">
+                            <searchBar contentMode="redraw" barStyle="black" text="" placeholder="search for an image e.g. apollo 11" translatesAutoresizingMaskIntoConstraints="NO" id="imx-9l-IXc">
                                 <rect key="frame" x="0.0" y="145.5" width="414" height="56"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>

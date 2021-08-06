@@ -9,6 +9,13 @@ import UIKit
 
 class DetailView: UIView {
     
+    public lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "rocket")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     public lazy var nasaImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo.on.rectangle.angled")
@@ -29,7 +36,7 @@ class DetailView: UIView {
     
     public lazy var descriptionTextView: UITextView = {
         let label = UITextView()
-        label.font = UIFont(name: "Futura", size: 16)
+        label.font = UIFont(name: "Futura", size: 14)
         label.textColor = .black
         label.textAlignment = .left
         label.layer.cornerRadius = 10
@@ -74,13 +81,28 @@ class DetailView: UIView {
     }
     
     private func commonInit() {
+        backgroundImageViewSetup()
         nasaImageViewSetup()
         titleLabelSetup()
+        locationLabelSetup()
         photographerLabelSetup()
         descriptionTextViewSetup()
     }
     
-    func nasaImageViewSetup() {
+    private func backgroundImageViewSetup() {
+        addSubview(backgroundImageView)
+        
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            backgroundImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            backgroundImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            backgroundImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
+        ])
+    }
+    
+    private func nasaImageViewSetup() {
         addSubview(nasaImageView)
         
         nasaImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -94,7 +116,7 @@ class DetailView: UIView {
         
     }
     
-    func titleLabelSetup() {
+    private func titleLabelSetup() {
         addSubview(titleLabel)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -106,19 +128,31 @@ class DetailView: UIView {
         ])
     }
     
-    func photographerLabelSetup() {
+    private func locationLabelSetup() {
+        addSubview(locationLabel)
+        
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            locationLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            locationLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    private func photographerLabelSetup() {
         addSubview(photographerLabel)
         
         photographerLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            photographerLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            photographerLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 16),
             photographerLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             photographerLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
     }
     
-    func descriptionTextViewSetup() {
+    private func descriptionTextViewSetup() {
         addSubview(descriptionTextView)
         
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +160,8 @@ class DetailView: UIView {
         NSLayoutConstraint.activate([
             descriptionTextView.topAnchor.constraint(equalTo: photographerLabel.bottomAnchor, constant: 20),
             descriptionTextView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            descriptionTextView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            descriptionTextView.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+            descriptionTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
         ])
     }
 }
