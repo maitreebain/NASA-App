@@ -9,9 +9,9 @@ import UIKit
 
 extension NASACollection {
     
-    static func getNASAImages(searchText: String, completion: @escaping (Result<[Item], Error>) -> ()) {
+    static func getNASAImages(searchText: String, page: Int = 1, completion: @escaping (Result<[Item], Error>) -> ()) {
         
-        let endpoint = "https://images-api.nasa.gov/search?q=\(searchText.lowercased())&media_type=image"
+        let endpoint = "https://images-api.nasa.gov/search?q=\(searchText.lowercased())&media_type=image&page=\(page)"
         
         
         guard let url = URL(string: endpoint) else {
@@ -23,6 +23,8 @@ extension NASACollection {
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
+            let response = response as! HTTPURLResponse
+            
             if let data = data {
                 do {
                     let item = try JSONDecoder().decode(NASACollection.self, from: data)
@@ -32,10 +34,11 @@ extension NASACollection {
                 }
             }
             
-//            if let response = response {
-//
-//            }
+//            response.statusCode
             //work on response
+            //show alert
+            
+            
         }
         dataTask.resume()
     }

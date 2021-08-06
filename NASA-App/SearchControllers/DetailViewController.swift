@@ -11,6 +11,8 @@ class DetailViewController: UIViewController {
 
     var nasaImageDetails: Item
     
+    private let detailView = DetailView()
+    
     init(_ imageDetail: Item) {
         self.nasaImageDetails = imageDetail
         super.init(nibName: nil, bundle: nil)
@@ -20,9 +22,9 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func loadView() {
+        view = detailView
+        view.backgroundColor = .white
     }
     
 

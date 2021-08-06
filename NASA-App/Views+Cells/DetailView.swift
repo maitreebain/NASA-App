@@ -27,7 +27,7 @@ class DetailView: UIView {
         return label
     }()
     
-    public lazy var descriptionLabel: UITextView = {
+    public lazy var descriptionTextView: UITextView = {
         let label = UITextView()
         label.font = UIFont(name: "Futura", size: 16)
         label.textColor = .black
@@ -65,6 +65,7 @@ class DetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
@@ -72,7 +73,59 @@ class DetailView: UIView {
     }
     
     private func commonInit() {
+        nasaImageViewSetup()
+        titleLabelSetup()
+        photographerLabelSetup()
+        descriptionTextViewSetup()
+    }
+    
+    func nasaImageViewSetup() {
+        addSubview(nasaImageView)
+        
+        nasaImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            nasaImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            nasaImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            nasaImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            nasaImageView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.3)
+        ])
         
     }
     
+    func titleLabelSetup() {
+        addSubview(titleLabel)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: nasaImageView.bottomAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    func photographerLabelSetup() {
+        addSubview(photographerLabel)
+        
+        photographerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            photographerLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            photographerLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            photographerLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    func descriptionTextViewSetup() {
+        addSubview(descriptionTextView)
+        
+        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            descriptionTextView.topAnchor.constraint(equalTo: photographerLabel.bottomAnchor, constant: 20),
+            descriptionTextView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            descriptionTextView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
 }

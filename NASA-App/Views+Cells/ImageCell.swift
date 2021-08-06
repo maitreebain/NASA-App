@@ -15,6 +15,7 @@ class ImageCell: UICollectionViewCell {
         
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.color = .blue
+        activityIndicator.center = center
         addSubview(activityIndicator)
         activityIndicator.startAnimating()
         

@@ -20,6 +20,8 @@ class SearchViewController: UIViewController {
         }
     }
     
+    private var page = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +32,26 @@ class SearchViewController: UIViewController {
     }
     
     private func loadUI() {
-
+        
+    }
+    
+    func search(searchText: String, page: Int = 1) {
+        
+        NASACollection.getNASAImages(searchText: searchText, page: page) { (result) in
+            
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let items):
+                DispatchQueue.main.async {
+                    if page == 1 {
+                    self.collection = items
+                    } else {
+                        self.collection.append(contentsOf: items)
+                    }
+                }
+            }
+        }
     }
     
     
@@ -44,18 +65,11 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
-        NASACollection.getNASAImages(searchText: text) { (result) in
-            
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let items):
-                DispatchQueue.main.async {
-                    self.collection = items
-                }
-                
-            }
-        }
+        searchText = text
+        
+        page = 1
+        search(searchText: searchText)
+        collection = [Item]()
         dismiss(animated: true)
     }
     
@@ -91,6 +105,12 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.configureCell(with: link)
         }
         
+        if indexPath.row == collection.count - 1 {
+            page += 1
+
+            search(searchText: searchText, page: page)
+        }
+        
         return cell
     }
     
@@ -100,4 +120,5 @@ extension SearchViewController: UICollectionViewDataSource {
         detailVC.nasaImageDetails = nasaData
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
 }

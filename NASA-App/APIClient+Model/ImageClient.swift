@@ -30,6 +30,8 @@ struct ImageClient {
             if let error =  error {
                 completion(.failure(error))
             }
+            
+            //response
         }.resume()
     }
 }
