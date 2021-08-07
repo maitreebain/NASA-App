@@ -30,6 +30,11 @@ class BackgroundView: UIView {
         return label
     }()
     
+    public lazy var tapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
+    
     
     init(title: String, message: String) {
         super.init(frame: UIScreen.main.bounds)
@@ -46,6 +51,7 @@ class BackgroundView: UIView {
     private func commonInit() {
         configureMessageLabel()
         configureTitleLabel()
+      addGestureRecognizer(tapGesture)
     }
     
     
@@ -69,5 +75,6 @@ class BackgroundView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
     }
+    
     
 }

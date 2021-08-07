@@ -10,13 +10,10 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var nasaImageDetails: Item
-    var indexPath: Int
-    
     private let detailView = DetailView()
     
-    init(_ imageDetail: Item,_ index: Int) {
+    init(_ imageDetail: Item) {
         self.nasaImageDetails = imageDetail
-        self.indexPath = index
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,9 +39,8 @@ class DetailViewController: UIViewController {
         if let descript = nasaImageDetails.data.first?.description {
             detailView.descriptionTextView.text = descript
         } else {
-            detailView.descriptionTextView.text = nasaImageDetails.data[indexPath].descriptionPlus
+            detailView.descriptionTextView.text = nasaImageDetails.data.first?.descriptionPlus
         }
-        
     }
     
     private func getImage() {

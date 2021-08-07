@@ -14,12 +14,6 @@ class SearchViewController: UIViewController {
     
     private var searchText = ""
     
-    private lazy var tapGesture: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer()
-        gesture.addTarget(self, action: #selector(resignTextField(gesture:)))
-        return gesture
-    }()
-    
     private lazy var imageView : UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named:"milky-way")
@@ -43,11 +37,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         emptyView()
-        if (imageCollectionView.backgroundView != nil) {
-            imageCollectionView.backgroundView?.addGestureRecognizer(tapGesture)
-        }
         imageSearchBar.delegate = self
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
@@ -76,7 +66,9 @@ class SearchViewController: UIViewController {
     
     private func emptyView() {
         imageCollectionView.backgroundColor = .black
-        imageCollectionView.backgroundView = BackgroundView(title: "No images available", message: "Use the search bar to look up images based on a NASA mission")
+        let background = BackgroundView(title: "No images available", message: "Use the search bar to look up images based on a NASA mission")
+        background.tapGesture.addTarget(self, action: #selector(resignTextField))
+        imageCollectionView.backgroundView = background
     }
     
     private func collectionViewCellShadowSetup(cell: UICollectionViewCell) {
@@ -91,13 +83,12 @@ class SearchViewController: UIViewController {
         imageSearchBar.resignFirstResponder()
     }
     
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else {
+        guard let text = searchBar.text, !text.isEmpty else {
             //show alert
             return
         }
@@ -114,20 +105,26 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let maxSize: CGSize = UIScreen.main.bounds.size
-        let itemWidth: CGFloat = maxSize.width * 0.40
-        let itemHeight: CGFloat = maxSize.height * 0.18
+        let interItemSpacing: CGFloat = 10
+        let maxWidth = UIScreen.main.bounds.size.width
+        let numberOfItems: CGFloat = 3
+        let totalSpacing: CGFloat = numberOfItems * interItemSpacing
+        let itemWidth: CGFloat = (maxWidth - totalSpacing) / numberOfItems
         
-        return CGSize(width: itemWidth, height: itemHeight)
-    }
+        return CGSize(width: itemWidth, height: itemWidth)
+      }
+      
+      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) ->  UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 10, bottom: 5, right: 10)
+      }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-           return UIEdgeInsets(top: 28, left: 8, bottom: 28, right: 8)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+      return 5
+    }
     
 }
 
-extension SearchViewController: UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -159,7 +156,7 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nasaData = collection[indexPath.row]
-        let detailVC =  DetailViewController(nasaData, indexPath.row)
+        let detailVC =  DetailViewController(nasaData)
         detailVC.nasaImageDetails = nasaData
         navigationController?.pushViewController(detailVC, animated: true)
     }

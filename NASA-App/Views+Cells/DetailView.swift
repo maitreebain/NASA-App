@@ -13,6 +13,7 @@ class DetailView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "rocket")
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -25,6 +26,7 @@ class DetailView: UIView {
         imageView.layer.shadowOpacity = 1
         imageView.layer.masksToBounds = false
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
