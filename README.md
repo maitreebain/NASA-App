@@ -9,9 +9,11 @@ This is an example of how a user can search up images and access the details bas
 ![gif](https://user-images.githubusercontent.com/55721710/128612161-9b84e072-5a4e-496a-abae-1714bb57b7f4.mp4)
 
 This is an example search.
+
 <img width="346" alt="search" src="https://user-images.githubusercontent.com/55721710/128612345-4f7dc309-d213-420b-ab62-17646ff1934a.png">
 
 This is an example detail view.
+
 <img width="354" alt="detail" src="https://user-images.githubusercontent.com/55721710/128612346-77bb8d9e-1434-4a49-96bf-0ca84fcc65a8.png">
 
 
