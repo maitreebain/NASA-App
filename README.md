@@ -1,8 +1,8 @@
-NASA-App
+##NASA-App
 
 An app created to search NASA images based on NASA events or space items. Users search images by utilizing the seachbar. They can also find more information about the image if they tap on the image, which leads them to a detail page.
 
-#DEMO
+##DEMO
 
 This is an example of how a user can search up images and access the details based on that image.
 
@@ -21,7 +21,7 @@ This app includes pagination, which allows users to continously access "new" pho
 
 ![gif](https://user-images.githubusercontent.com/55721710/128612441-82048be2-e3ad-478c-be03-5939530fae61.mp4)
 
-#CODE SNIPPET
+##CODE SNIPPET
 
 This block of code shows the implementation of pagation based on pages that the NASA API gives access to. 
 
