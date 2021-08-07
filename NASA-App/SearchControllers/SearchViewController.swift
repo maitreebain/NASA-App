@@ -21,10 +21,10 @@ class SearchViewController: UIViewController {
         return iv
     }()
     
-    private var collection = [Item]() {
+    private var nasaDataCollection = [Item]() {
         didSet{
             imageCollectionView.reloadData()
-            if collection.count == 0 {
+            if nasaDataCollection.count == 0 {
                 emptyView()
             } else {
                 imageCollectionView.backgroundView = imageView
@@ -43,7 +43,6 @@ class SearchViewController: UIViewController {
         imageCollectionView.dataSource = self
     }
     
-    
     func search(searchText: String, page: Int = 1) {
         
         NASACollection.getNASAImages(searchText: searchText, page: page) { [weak self] (result) in
@@ -55,10 +54,10 @@ class SearchViewController: UIViewController {
                 DispatchQueue.main.async {
                     if page == 1 {
                         //if on first page, get new set of data
-                        self?.collection = items
+                        self?.nasaDataCollection = items
                     } else {
                         //if scrolling to more than first page, then append all items to array to load up more data/images
-                        self?.collection.append(contentsOf: items)
+                        self?.nasaDataCollection.append(contentsOf: items)
                     }
                     self?.imageSearchBar.resignFirstResponder()
                 }
@@ -99,16 +98,14 @@ extension SearchViewController: UISearchBarDelegate {
         searchText = text
         page = 1
         search(searchText: searchText)
-        collection = [Item]()
+        nasaDataCollection = [Item]()
     }
-    
-    
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let interItemSpacing: CGFloat = 10
+        let interItemSpacing: CGFloat = 16
         let maxWidth = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 3
         let totalSpacing: CGFloat = numberOfItems * interItemSpacing
@@ -118,11 +115,11 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) ->  UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 10, bottom: 5, right: 10)
+        return UIEdgeInsets(top: 20, left: 8, bottom: 20, right: 8)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 8
     }
     
 }
@@ -131,7 +128,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return collection.count
+        return nasaDataCollection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -139,9 +136,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             fatalError("could not return ImageCell")
         }
         
-        let item = collection[indexPath.row]
+        let item = nasaDataCollection[indexPath.row]
         
-        cell.imageView.layer.cornerRadius = 10
+        cell.imageCellImageView.layer.cornerRadius = 10
         collectionViewCellShadowSetup(cell: cell)
         
         if let link = item.links?.first?.href {
@@ -149,7 +146,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         
         //checks current row to see if it's the last item within the collection to add data onto the current data array for pagination
-        if indexPath.row == collection.count - 1 {
+        if indexPath.row == nasaDataCollection.count - 1 {
             page += 1
             
             search(searchText: searchText, page: page)
@@ -159,7 +156,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nasaData = collection[indexPath.row]
+        let nasaData = nasaDataCollection[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
             fatalError("no segue")

@@ -9,7 +9,7 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageCellImageView: UIImageView!
     
     func configureCell(with url: String) {
         
@@ -26,10 +26,10 @@ class ImageCell: UICollectionViewCell {
                 switch result{
                 case .failure:
                     activityIndicator.stopAnimating()
-                    self?.imageView.image = UIImage(systemName: "photo.on.rectangle.angled")
+                    self?.imageCellImageView.image = UIImage(systemName: "photo.on.rectangle.angled")
                 case .success(let image):
                     activityIndicator.stopAnimating()
-                    self?.imageView.image = image
+                    self?.imageCellImageView.image = image
                     
                 }
             }

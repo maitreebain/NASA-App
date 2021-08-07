@@ -56,7 +56,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="123" height="128"/>
                                         <connections>
-                                            <outlet property="imageView" destination="vzQ-eZ-5Rp" id="gun-fj-lpS"/>
+                                            <outlet property="imageCellImageView" destination="vzQ-eZ-5Rp" id="gun-fj-lpS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

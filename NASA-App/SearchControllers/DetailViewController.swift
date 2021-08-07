@@ -24,9 +24,7 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.black
         loadUI()
         customizeUI()
-        getImage()
     }
-    
     
     private func loadUI() {
         
@@ -45,22 +43,6 @@ class DetailViewController: UIViewController {
         } else {
             detailTextView.text = nasaImageInfo.data.first?.descriptionPlus ?? "No title available"
         }
-        
-    }
-    
-    private func customizeUI() {        
-        detailImageView.layer.cornerRadius = 4
-        detailTextView.layer.cornerRadius = 4
-        detailTextView.layer.borderWidth = 2
-        detailTextView.layer.borderColor = UIColor.white.cgColor
-    }
-    
-    private func getImage() {
-        guard let nasaImageInfo = nasaImageDetails else {
-            print("nasaImageDetails not available")
-            return
-        }
-        
         if let url = nasaImageInfo.links?.first?.href {
             ImageClient.fetchImage(urlString: url) { (result) in
                 
@@ -74,5 +56,14 @@ class DetailViewController: UIViewController {
                 }
             }
         }
+        
     }
+    
+    private func customizeUI() {
+        detailImageView.layer.cornerRadius = 4
+        detailTextView.layer.cornerRadius = 4
+        detailTextView.layer.borderWidth = 2
+        detailTextView.layer.borderColor = UIColor.white.cgColor
+    }
+    
 }
