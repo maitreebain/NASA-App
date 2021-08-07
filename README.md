@@ -19,7 +19,7 @@ This is an example detail view.
 
 This app includes pagination, which allows users to continously access "new" photos. 
 
-![gif]https://user-images.githubusercontent.com/55721710/128612441-82048be2-e3ad-478c-be03-5939530fae61.mp4
+![gif](https://user-images.githubusercontent.com/55721710/128612441-82048be2-e3ad-478c-be03-5939530fae61.mp4)
 
 #CODE SNIPPET
 
