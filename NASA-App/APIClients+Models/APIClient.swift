@@ -22,21 +22,15 @@ extension NASACollection {
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            let response = response as! HTTPURLResponse
-            
             if let data = data {
                 do {
                     let item = try JSONDecoder().decode(NASACollection.self, from: data)
+                    //gets items array to load data onto collection view
                     completion(.success(item.collection.items))
                 } catch {
                     completion(.failure(error))
                 }
             }
-            
-//            response.statusCode
-            //work on response
-            //show alert
-            
             
         }
         dataTask.resume()

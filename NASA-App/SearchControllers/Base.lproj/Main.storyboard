@@ -210,7 +210,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentView" destination="ZAo-EY-r5F" id="psr-Dj-h4H"/>
                         <outlet property="detailImageView" destination="05X-fI-0Wc" id="pRc-aY-BLa"/>
                         <outlet property="detailLocationLabel" destination="s4e-Pa-Ihy" id="vJX-u0-jQh"/>
                         <outlet property="detailPhotographerLabel" destination="u6b-7o-4ay" id="oRd-YX-LLZ"/>

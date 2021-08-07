@@ -9,7 +9,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var detailLocationLabel: UILabel!
@@ -38,6 +37,7 @@ class DetailViewController: UIViewController {
         }
         
         title = nasaImageInfo.data.first?.title
+        //give default values to items
         detailTitleLabel.text = nasaImageInfo.data.first?.title ?? "No title available"
         detailLocationLabel.text = nasaImageInfo.data.first?.location ?? "No location available"
         detailPhotographerLabel.text = nasaImageInfo.data.first?.photographer ?? "No photographer available"
@@ -76,6 +76,4 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
-    
 }

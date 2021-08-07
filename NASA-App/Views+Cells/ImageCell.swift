@@ -13,6 +13,7 @@ class ImageCell: UICollectionViewCell {
     
     func configureCell(with url: String) {
         
+        //activity indicator prevents images flickering
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.color = .blue
         activityIndicator.startAnimating()

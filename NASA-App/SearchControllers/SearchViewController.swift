@@ -54,8 +54,10 @@ class SearchViewController: UIViewController {
             case .success(let items):
                 DispatchQueue.main.async {
                     if page == 1 {
+                        //if on first page, get new set of data
                         self?.collection = items
                     } else {
+                        //if scrolling to more than first page, then append all items to array to load up more data/images
                         self?.collection.append(contentsOf: items)
                     }
                     self?.imageSearchBar.resignFirstResponder()
@@ -90,6 +92,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             //show alert
+            self.showAlert(title: "Error searching", message: "Could not find what was searched. Check spelling or search text.")
             return
         }
         
@@ -145,6 +148,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.configureCell(with: link)
         }
         
+        //checks current row to see if it's the last item within the collection to add data onto the current data array for pagination
         if indexPath.row == collection.count - 1 {
             page += 1
 

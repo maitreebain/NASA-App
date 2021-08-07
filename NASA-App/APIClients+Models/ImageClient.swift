@@ -31,7 +31,6 @@ struct ImageClient {
                 completion(.failure(error))
             }
             
-            //response
         }.resume()
     }
 }
