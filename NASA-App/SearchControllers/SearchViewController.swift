@@ -156,7 +156,10 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nasaData = collection[indexPath.row]
-        let detailVC =  DetailViewController(nasaData)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            fatalError("no segue")
+        }
         detailVC.nasaImageDetails = nasaData
         navigationController?.pushViewController(detailVC, animated: true)
     }
