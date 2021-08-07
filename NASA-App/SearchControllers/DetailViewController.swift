@@ -50,10 +50,10 @@ class DetailViewController: UIViewController {
     }
     
     private func customizeUI() {        
-        detailImageView.layer.cornerRadius = 8
-        detailTextView.layer.cornerRadius = 8
+        detailImageView.layer.cornerRadius = 4
+        detailTextView.layer.cornerRadius = 4
         detailTextView.layer.borderWidth = 2
-        detailTextView.backgroundColor?.withAlphaComponent(0.8)
+        detailTextView.layer.borderColor = UIColor.white.cgColor
     }
     
     private func getImage() {

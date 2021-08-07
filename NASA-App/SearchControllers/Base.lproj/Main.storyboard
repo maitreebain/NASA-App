@@ -130,63 +130,64 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAo-EY-r5F" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="05X-fI-0Wc">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="294"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="05X-fI-0Wc">
+                                                <rect key="frame" x="20" y="20" width="374" height="294"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="TKv-ok-hTA">
-                                                <rect key="frame" x="20" y="302" width="374" height="101.5"/>
+                                                <rect key="frame" x="20" y="330" width="374" height="101.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tn9-aC-G0c">
                                                         <rect key="frame" x="0.0" y="0.0" width="62.5" height="41"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4e-Pa-Ihy">
                                                         <rect key="frame" x="0.0" y="55" width="45" height="14.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6b-7o-4ay">
                                                         <rect key="frame" x="0.0" y="83.5" width="94" height="18"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3e-Md-6Xc">
-                                                <rect key="frame" x="20" y="423.5" width="374" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LS1-W4-gJ8">
-                                                <rect key="frame" x="20" y="452" width="374" height="240"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" systemColor="labelColor"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LS1-W4-gJ8">
+                                                <rect key="frame" x="20" y="488" width="374" height="300"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3e-Md-6Xc">
+                                                <rect key="frame" x="20" y="451.5" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="N3e-Md-6Xc" firstAttribute="top" secondItem="TKv-ok-hTA" secondAttribute="bottom" constant="20" id="AQb-KU-x4d"/>
+                                            <constraint firstItem="05X-fI-0Wc" firstAttribute="leading" secondItem="ZAo-EY-r5F" secondAttribute="leading" constant="20" symbolic="YES" id="CP8-KO-L6T"/>
                                             <constraint firstItem="TKv-ok-hTA" firstAttribute="leading" secondItem="ZAo-EY-r5F" secondAttribute="leading" constant="20" id="KEO-gj-Ar4"/>
                                             <constraint firstItem="05X-fI-0Wc" firstAttribute="height" secondItem="ZAo-EY-r5F" secondAttribute="height" multiplier="0.245" id="LRG-VX-eCz"/>
                                             <constraint firstAttribute="trailing" secondItem="LS1-W4-gJ8" secondAttribute="trailing" constant="20" id="MYb-aG-Nif"/>
-                                            <constraint firstItem="05X-fI-0Wc" firstAttribute="top" secondItem="ZAo-EY-r5F" secondAttribute="top" id="Td5-TJ-jZv"/>
+                                            <constraint firstAttribute="trailing" secondItem="05X-fI-0Wc" secondAttribute="trailing" constant="20" symbolic="YES" id="NV3-zo-Ipo"/>
+                                            <constraint firstItem="05X-fI-0Wc" firstAttribute="top" secondItem="ZAo-EY-r5F" secondAttribute="top" constant="20" symbolic="YES" id="Td5-TJ-jZv"/>
                                             <constraint firstItem="N3e-Md-6Xc" firstAttribute="leading" secondItem="ZAo-EY-r5F" secondAttribute="leading" constant="20" id="Vuc-ne-bJi"/>
                                             <constraint firstAttribute="trailing" secondItem="TKv-ok-hTA" secondAttribute="trailing" constant="20" id="YJr-1t-CXv"/>
                                             <constraint firstAttribute="height" constant="1200" id="itA-N9-l39"/>
-                                            <constraint firstItem="TKv-ok-hTA" firstAttribute="top" secondItem="05X-fI-0Wc" secondAttribute="bottom" constant="8" id="mhF-ld-W0V"/>
+                                            <constraint firstItem="TKv-ok-hTA" firstAttribute="top" secondItem="05X-fI-0Wc" secondAttribute="bottom" constant="16" id="mhF-ld-W0V"/>
                                             <constraint firstItem="LS1-W4-gJ8" firstAttribute="leading" secondItem="ZAo-EY-r5F" secondAttribute="leading" constant="20" id="ojS-Qh-eZ1"/>
-                                            <constraint firstItem="05X-fI-0Wc" firstAttribute="leading" secondItem="ZAo-EY-r5F" secondAttribute="leading" constant="20" symbolic="YES" id="pdI-R7-3GD"/>
-                                            <constraint firstItem="LS1-W4-gJ8" firstAttribute="height" secondItem="ZAo-EY-r5F" secondAttribute="height" multiplier="0.2" id="swo-Yk-7xz"/>
-                                            <constraint firstAttribute="trailing" secondItem="05X-fI-0Wc" secondAttribute="trailing" constant="20" symbolic="YES" id="sxd-uz-v0j"/>
+                                            <constraint firstItem="LS1-W4-gJ8" firstAttribute="height" secondItem="ZAo-EY-r5F" secondAttribute="height" multiplier="0.25" id="swo-Yk-7xz"/>
                                             <constraint firstAttribute="trailing" secondItem="N3e-Md-6Xc" secondAttribute="trailing" constant="20" id="vbc-LU-7XQ"/>
-                                            <constraint firstItem="LS1-W4-gJ8" firstAttribute="top" secondItem="N3e-Md-6Xc" secondAttribute="bottom" constant="8" id="xVO-Vp-Xad"/>
+                                            <constraint firstItem="LS1-W4-gJ8" firstAttribute="top" secondItem="N3e-Md-6Xc" secondAttribute="bottom" constant="16" id="xVO-Vp-Xad"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -223,9 +224,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
