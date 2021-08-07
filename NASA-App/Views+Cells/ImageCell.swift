@@ -34,6 +34,6 @@ class ImageCell: UICollectionViewCell {
                 }
             }
         }
-    
+        
     }
 }

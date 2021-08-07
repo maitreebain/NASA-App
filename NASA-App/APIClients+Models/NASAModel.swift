@@ -31,7 +31,7 @@ struct Data: Decodable {
     let photographer: String?
     let descriptionPlus: String?
     let location: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case title
         case nasaID = "nasa_id"

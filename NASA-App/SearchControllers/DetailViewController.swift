@@ -20,7 +20,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.barTintColor = UIColor.black
         loadUI()
@@ -42,7 +41,7 @@ class DetailViewController: UIViewController {
         detailLocationLabel.text = nasaImageInfo.data.first?.location ?? "No location available"
         detailPhotographerLabel.text = nasaImageInfo.data.first?.photographer ?? "No photographer available"
         if let descript = nasaImageInfo.data.first?.description {
-        detailTextView.text = descript
+            detailTextView.text = descript
         } else {
             detailTextView.text = nasaImageInfo.data.first?.descriptionPlus ?? "No title available"
         }
@@ -64,7 +63,7 @@ class DetailViewController: UIViewController {
         
         if let url = nasaImageInfo.links?.first?.href {
             ImageClient.fetchImage(urlString: url) { (result) in
-
+                
                 DispatchQueue.main.async {
                     switch result{
                     case .failure:

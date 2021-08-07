@@ -51,7 +51,7 @@ class BackgroundView: UIView {
     private func commonInit() {
         configureMessageLabel()
         configureTitleLabel()
-      addGestureRecognizer(tapGesture)
+        addGestureRecognizer(tapGesture)
     }
     
     

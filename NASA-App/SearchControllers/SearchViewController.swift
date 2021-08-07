@@ -42,7 +42,7 @@ class SearchViewController: UIViewController {
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
     }
-
+    
     
     func search(searchText: String, page: Int = 1) {
         
@@ -115,14 +115,14 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let itemWidth: CGFloat = (maxWidth - totalSpacing) / numberOfItems
         
         return CGSize(width: itemWidth, height: itemWidth)
-      }
-      
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) ->  UIEdgeInsets {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) ->  UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 10, bottom: 5, right: 10)
-      }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-      return 5
+        return 5
     }
     
 }
@@ -151,7 +151,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         //checks current row to see if it's the last item within the collection to add data onto the current data array for pagination
         if indexPath.row == collection.count - 1 {
             page += 1
-
+            
             search(searchText: searchText, page: page)
         }
         
