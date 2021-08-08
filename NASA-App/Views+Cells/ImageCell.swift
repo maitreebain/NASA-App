@@ -13,14 +13,13 @@ class ImageCell: UICollectionViewCell {
     
     func configureCell(with url: String) {
         
-        //activity indicator prevents images flickering
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.color = .blue
         activityIndicator.startAnimating()
         activityIndicator.center = center
         addSubview(activityIndicator)
         
-        ImageClient.fetchImage(urlString: url) { [weak self] (result) in
+        ImageClient.shared.fetchImage(urlString: url) { [weak self] (result) in
             
             DispatchQueue.main.async {
                 switch result{

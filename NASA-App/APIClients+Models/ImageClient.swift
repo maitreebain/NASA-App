@@ -7,9 +7,13 @@
 
 import UIKit
 
-struct ImageClient {
+class ImageClient {
     
-    static func fetchImage(urlString: String, completion: @escaping (Result<UIImage,Error>) -> Void) {
+    static let shared = ImageClient()
+    
+    public static var imageCache = NSCache<NSString, UIImage>()
+    
+    func fetchImage(urlString: String, completion: @escaping (Result<UIImage,Error>) -> Void) {
         
         let formattedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
@@ -24,6 +28,8 @@ struct ImageClient {
                 guard let image = UIImage(data: data) else {
                     return
                 }
+            
+                ImageClient.imageCache.setObject(image, forKey: "nasaImage")
                 completion(.success(image))
             }
             

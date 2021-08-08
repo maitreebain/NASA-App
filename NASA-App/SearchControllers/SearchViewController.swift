@@ -45,7 +45,7 @@ class SearchViewController: UIViewController {
     
     func search(searchText: String, page: Int = 1) {
         
-        NASACollection.getNASAImages(searchText: searchText, page: page) { [weak self] (result) in
+        NASAAPIClient.shared.getNASAItems(searchText: searchText, page: page) { [weak self] (result) in
             
             switch result {
             case .failure(let error):
@@ -105,7 +105,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let interItemSpacing: CGFloat = 16
+        let interItemSpacing: CGFloat = 20
         let maxWidth = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 3
         let totalSpacing: CGFloat = numberOfItems * interItemSpacing

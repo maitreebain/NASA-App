@@ -7,9 +7,11 @@
 
 import UIKit
 
-extension NASACollection {
+class NASAAPIClient {
     
-    static func getNASAImages(searchText: String, page: Int = 1, completion: @escaping (Result<[Item], Error>) -> ()) {
+    static let shared = NASAAPIClient()
+    
+    func getNASAItems(searchText: String, page: Int = 1, completion: @escaping (Result<[Item], Error>) -> ()) {
         
         let endpoint = "https://images-api.nasa.gov/search?q=\(searchText.lowercased())&media_type=image&page=\(page)"
         

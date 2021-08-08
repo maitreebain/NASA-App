@@ -43,19 +43,8 @@ class DetailViewController: UIViewController {
         } else {
             detailTextView.text = nasaImageInfo.data.first?.descriptionPlus ?? "No title available"
         }
-        if let url = nasaImageInfo.links?.first?.href {
-            ImageClient.fetchImage(urlString: url) { (result) in
-                
-                DispatchQueue.main.async {
-                    switch result{
-                    case .failure:
-                        self.detailImageView.image = UIImage(systemName: "photo.on.rectangle.angled")
-                    case .success(let image):
-                        self.detailImageView.image = image
-                    }
-                }
-            }
-        }
+        
+        detailImageView.image = ImageClient.imageCache.object(forKey: "nasaImage")
         
     }
     

@@ -63,7 +63,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nmR-kD-gbl" firstAttribute="top" secondItem="imx-9l-IXc" secondAttribute="bottom" id="13W-iW-Eva"/>
                             <constraint firstItem="imx-9l-IXc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Zf-N3-Cnj"/>
@@ -200,7 +200,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="j3U-of-nbz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="84C-gn-3j2" firstAttribute="top" secondItem="EHX-eW-q4h" secondAttribute="top" id="Ahr-2A-v6M"/>
                             <constraint firstAttribute="bottom" secondItem="84C-gn-3j2" secondAttribute="bottom" id="Fn0-N8-MxX"/>
