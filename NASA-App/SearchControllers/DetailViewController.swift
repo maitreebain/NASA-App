@@ -44,7 +44,17 @@ class DetailViewController: UIViewController {
             detailTextView.text = nasaImageInfo.data.first?.descriptionPlus ?? "No title available"
         }
         
-        detailImageView.image = ImageClient.imageCache.object(forKey: "nasaImage")
+        ImageClient.shared.fetchImage(urlString: nasaImageInfo.links?.first?.href ?? "", completion: { (result) in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self.showAlert(title: "Error loading image", message: "\(error)")
+                case .success(let image):
+                    self.detailImageView.image = image
+                }
+            }
+        })
         
     }
     

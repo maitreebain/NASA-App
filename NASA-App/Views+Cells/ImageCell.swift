@@ -22,7 +22,7 @@ class ImageCell: UICollectionViewCell {
         ImageClient.shared.fetchImage(urlString: url) { [weak self] (result) in
             
             DispatchQueue.main.async {
-                switch result{
+                switch result {
                 case .failure:
                     activityIndicator.stopAnimating()
                     self?.imageCellImageView.image = UIImage(systemName: "photo.on.rectangle.angled")

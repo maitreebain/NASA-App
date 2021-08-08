@@ -5,11 +5,15 @@
 //  Created by Maitree Bain on 8/4/21.
 //
 
-import UIKit
+import Foundation
 
 class NASAAPIClient {
     
     static let shared = NASAAPIClient()
+    
+    private init() {
+        print("singleton initialized")
+    }
     
     func getNASAItems(searchText: String, page: Int = 1, completion: @escaping (Result<[Item], AppError>) -> ()) {
         
@@ -20,23 +24,34 @@ class NASAAPIClient {
             return
         }
         
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
         
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        request.cachePolicy = .useProtocolCachePolicy
+        
+        if let cacheResponse = URLSession.shared.configuration.urlCache?.cachedResponse(for: request) {
             
-            if let data = data {
-                do {
-                    let item = try JSONDecoder().decode(NASACollection.self, from: data)
-                    //gets items array to load data onto collection view
-                    completion(.success(item.collection.items))
-                } catch {
-                    completion(.failure(.couldNotParseJSON(rawError: error)))
-                }
+            do {
+                let item = try JSONDecoder().decode(NASACollection.self, from: cacheResponse.data)
+                completion(.success(item.collection.items))
+            } catch {
+                completion(.failure(.couldNotParseJSON(rawError: error)))
             }
             
+        } else {
+            let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                if let data = data {
+                    do {
+                        let item = try JSONDecoder().decode(NASACollection.self, from: data)
+                        //gets items array to load data onto collection view
+                        completion(.success(item.collection.items))
+                    } catch {
+                        completion(.failure(.couldNotParseJSON(rawError: error)))
+                    }
+                }
+            }
+            dataTask.resume()
         }
-        dataTask.resume()
     }
-    
     
 }

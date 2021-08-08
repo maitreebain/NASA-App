@@ -11,7 +11,11 @@ class ImageClient {
     
     static let shared = ImageClient()
     
-    public static var imageCache = NSCache<NSString, UIImage>()
+    private init() {
+        print("singleton initialized")
+    }
+    
+    private var imageCache = NSCache<NSString, UIImage>()
     
     func fetchImage(urlString: String, completion: @escaping (Result<UIImage,AppError>) -> Void) {
         
@@ -22,21 +26,26 @@ class ImageClient {
             return
         }
         
-        URLSession.shared.dataTask(with: officialURL) { (data, response, error) in
+        if let image = self.imageCache.object(forKey: url as NSString) {
+            completion(.success(image))
             
-            if let data = data {
-                guard let image = UIImage(data: data) else {
-                    return
+        } else {
+            URLSession.shared.dataTask(with: officialURL) { (data, response, error) in
+                
+                if let data = data {
+                    guard let image = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    self.imageCache.setObject(image, forKey: url as NSString)
+                    completion(.success(image))
                 }
-            
-                ImageClient.imageCache.setObject(image, forKey: "nasaImage")
-                completion(.success(image))
-            }
-            
-            if let error =  error {
-                completion(.failure(.couldNotParseJSON(rawError: error)))
-            }
-            
-        }.resume()
+                
+                if let error =  error {
+                    completion(.failure(.couldNotParseJSON(rawError: error)))
+                }
+                
+            }.resume()
+        }
     }
 }

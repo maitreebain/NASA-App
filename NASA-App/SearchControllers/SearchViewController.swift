@@ -86,6 +86,8 @@ class SearchViewController: UIViewController {
     
 }
 
+// MARK: SearchBarDelegate
+
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -101,6 +103,8 @@ extension SearchViewController: UISearchBarDelegate {
         nasaDataCollection = [Item]()
     }
 }
+
+// MARK: CollectionViewDelegateFlowLayout
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
@@ -123,6 +127,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+// MARK: CollectionViewDelegate, CollectionViewDataSourceDataSource
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
