@@ -6,7 +6,7 @@ An app created to search NASA images based on NASA events or space items. Users 
 
 This is an example of how a user can search up images and access the details based on that image.
 
-![gif](https://user-images.githubusercontent.com/55721710/128612161-9b84e072-5a4e-496a-abae-1714bb57b7f4.mp4)
+[gif](https://user-images.githubusercontent.com/55721710/128612161-9b84e072-5a4e-496a-abae-1714bb57b7f4.mp4)
 
 This is an example search.
 
@@ -19,7 +19,7 @@ This is an example detail view.
 
 This app includes pagination, which allows users to continously access "new" photos. 
 
-![gif](https://user-images.githubusercontent.com/55721710/128612441-82048be2-e3ad-478c-be03-5939530fae61.mp4)
+[gif](https://user-images.githubusercontent.com/55721710/128612441-82048be2-e3ad-478c-be03-5939530fae61.mp4)
 
 ## CODE SNIPPET
 
