@@ -13,12 +13,12 @@ class ImageClient {
     
     public static var imageCache = NSCache<NSString, UIImage>()
     
-    func fetchImage(urlString: String, completion: @escaping (Result<UIImage,Error>) -> Void) {
+    func fetchImage(urlString: String, completion: @escaping (Result<UIImage,AppError>) -> Void) {
         
         let formattedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         guard let url = formattedStr, let officialURL = URL(string: url) else {
-            print("no image url available")
+            completion(.failure(.badURL))
             return
         }
         
@@ -34,7 +34,7 @@ class ImageClient {
             }
             
             if let error =  error {
-                completion(.failure(error))
+                completion(.failure(.couldNotParseJSON(rawError: error)))
             }
             
         }.resume()

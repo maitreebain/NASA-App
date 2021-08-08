@@ -11,12 +11,12 @@ class NASAAPIClient {
     
     static let shared = NASAAPIClient()
     
-    func getNASAItems(searchText: String, page: Int = 1, completion: @escaping (Result<[Item], Error>) -> ()) {
+    func getNASAItems(searchText: String, page: Int = 1, completion: @escaping (Result<[Item], AppError>) -> ()) {
         
         let endpoint = "https://images-api.nasa.gov/search?q=\(searchText.lowercased())&media_type=image&page=\(page)"
         
         guard let formattedEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: formattedEndpoint) else {
-            print("no url found")
+            completion(.failure(.badURL))
             return
         }
         
@@ -30,7 +30,7 @@ class NASAAPIClient {
                     //gets items array to load data onto collection view
                     completion(.success(item.collection.items))
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(.couldNotParseJSON(rawError: error)))
                 }
             }
             

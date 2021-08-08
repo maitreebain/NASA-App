@@ -21,6 +21,7 @@
 		804FB29A26B9F5C100C8897A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 804FB29826B9F5C100C8897A /* LaunchScreen.storyboard */; };
 		804FB2A526B9F5C200C8897A /* NASA_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB2A426B9F5C200C8897A /* NASA_AppTests.swift */; };
 		804FB2B026B9F5C200C8897A /* NASA_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FB2AF26B9F5C200C8897A /* NASA_AppUITests.swift */; };
+		8069308026C07BB200F9A8A6 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069307F26C07BB200F9A8A6 /* AppError.swift */; };
 		8080993C26BB707600F23EA3 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8080993B26BB707600F23EA3 /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		804FB2AB26B9F5C200C8897A /* NASA-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NASA-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		804FB2AF26B9F5C200C8897A /* NASA_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASA_AppUITests.swift; sourceTree = "<group>"; };
 		804FB2B126B9F5C200C8897A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8069307F26C07BB200F9A8A6 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		8080993B26BB707600F23EA3 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				8002A85E26BB321C005EAA5C /* APIClient.swift */,
 				800D74B626BB76640053C329 /* ImageClient.swift */,
 				8002A86626BB3229005EAA5C /* NASAModel.swift */,
+				8069307F26C07BB200F9A8A6 /* AppError.swift */,
 			);
 			path = "APIClients+Models";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				804FB28E26B9F5BF00C8897A /* AppDelegate.swift in Sources */,
 				8002A86C26BB3241005EAA5C /* DetailViewController.swift in Sources */,
 				804FB29026B9F5BF00C8897A /* SceneDelegate.swift in Sources */,
+				8069308026C07BB200F9A8A6 /* AppError.swift in Sources */,
 				800D74B726BB76640053C329 /* ImageClient.swift in Sources */,
 				8002A85F26BB321C005EAA5C /* APIClient.swift in Sources */,
 			);
